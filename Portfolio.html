@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang = "en">
+<head>
+    <title>David Fuentes Dabbah - Portfolio</title>
+<meta charset="UTF-8">
+<link rel="preload" as="image" href="YoEnRojo.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Limelight&family=Ultra&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Limelight&family=Oi&family=Ultra&display=swap" rel="stylesheet">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+    body { 
+        font-family: Arial, Helvetica, sans-serif;
+        margin: 0;
+    }
+
+
+    #desktop {
+        height:100vh;
+        width:100vw;
+        background-image: url("frutigerdesktop.jpg");
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .icon {
+        width: 80px;
+        text-align: center;
+        cursor: pointer;
+        position: absolute;
+    }
+
+    .icon img {
+        width: 78px;
+    }
+
+    .icon p {
+        margin: 4px 0 0;
+        font-size: 18px;
+        font-weight: bold;
+        color: white;
+        text-shadow: 2px 2px #000000;
+    }
+
+    .icon:nth-child(1) {top:200px; left:1640px;} /*delirium*/
+    .icon:nth-child(2) {top:790px; left:1030px;} /*Video Room*/
+    .icon:nth-child(3) {top:190px; left:340px;} /*About me*/
+    .icon:nth-child(4) {top:290px; left:840px;} /*3D Scans*/
+    .icon:nth-child(5) {top:600px; left:540px;} /*Traditional Gallery*/
+    .icon:nth-child(6) {top:550px; left:1400px;} /*Contact Me*/
+
+
+    .window {
+        position:absolute;
+        top:10%;
+        left:10%;
+        width:70vw;
+        height: 70vh;
+        background: white;
+        border: 2px solid black;
+        padding:10px;
+        display: none;
+        overflow: hidden;
+    }
+
+    .window-content {
+        display:grid;
+        grid-template-columns: 1fr 1fr;
+        grid-auto-rows: auto;
+        gap: 15px;
+
+        height:100%;
+        overflow-y: auto;
+        padding:10px;
+    }
+
+    @media (max-width: 700px) {
+        .window-content {
+        grid-template-columns: 1fr;
+        }
+    }
+
+    .window img {
+        width: 100%;
+        height:auto;
+    }
+
+    .window-iframe {
+        width:100%;
+        aspect-ratio: 16/9;
+        border: none;
+    }
+
+    .window .close {
+        position:absolute;
+        top:5px;
+        right:5px;
+    }
+
+
+    .limelight-regular {
+        font-family: "Limelight", sans-serif;
+        font-weight: 400;
+        font-style: normal;
+    }
+
+    .oi-regular {
+        font-family: "Oi", serif;
+        font-weight: 400;
+        font-style: normal;
+    }
+
+    .ultra-regular {
+        font-family: "Ultra", serif;
+        font-weight: 400;
+        font-style: normal;
+    }
+
+
+    .YoEnRojo {
+        width: 100%;
+        display:block;
+    }
+
+    .Firma {
+        position:absolute;
+        top:2vh;
+        left:3vw;
+        height: 22vh;
+        width: 20vw;
+        max-height: 300px;
+        margin: 0;
+    }
+
+    .header-top {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        gap:2vw;
+    }
+
+    .text-header h1 {
+        font-size: 8vw;
+        text-align: right;
+        margin-left: 32.5vw;
+        margin-top: 0;
+        margin-right:0;
+    }
+
+    .text-header h2 {
+        font-size: 2.5vw;
+        text-align: right;
+        font-weight: 1000;
+        margin-top: 0.3vh;
+        margin-right: 0;
+    }
+
+    @media screen and (max-width: 500px) {
+        .header-top {
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 2vh;
+        }
+
+        .text-header h1 {
+            font-size: 12vw;
+        }
+
+        .text-header h2 {
+            font-size: 4vw;
+        }
+
+        .Firma {
+            height:15vh;
+        }
+    }
+
+    .header {
+        position:relative;
+        height: 100vh;
+        padding: 5vh 5vw;
+        
+        display:flex;
+        flex-direction: column;
+        
+        color: white;
+
+        background-image: url(YoEnRojo.png);
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+    }
+
+    .header h1 {
+        margin-top: -80px;
+        font-size: 190px;
+        font-weight: 500;
+        text-shadow: 3px 3px #000000;    
+    }
+
+    .header h2 {
+        margin-top: -60px;
+        font-weight: 600;
+        text-shadow: 2px 2px #000000;
+    }
+
+    .header h3 {
+        color: white;
+        font-weight: 1000;
+        text-shadow: 2px 1px #000000;
+    }
+
+    @media screen and (max-width: 700px) {
+        .row{
+        flex-direction: column;
+        }
+    }
+
+    @media screen and (max-width: 400px) {
+        .navbar a {
+            float:none;
+            width: 100%;
+        }
+    }
+
+    .window .text h1 {
+        font-size: 40px;
+        margin-left: 6px;
+    }
+
+    .window .text p {
+        font-size: 24px;
+        margin-left: 6px;
+    }
+
+        form input, 
+    form textarea {
+        width: 90%;
+        padding: 10px;
+        font-size: 16px;
+        border: 1px solid black;
+    }
+
+    form button {
+        padding: 10px 20px;
+        font-size: 16px;
+        cursor: pointer;
+    }
+    
+</style>
+</head>
+
+<body>
+<div class="header">
+    <div class="header-top">
+        <img class="Firma" src="Firma.png">
+        <div class="text-header">
+            <h1 class="ultra-regular"> <br> David Fuentes
+            Dabbah </h1>
+            <h2>Experimental artist and creative.</h2>
+            <h3>This website was made with the help of Ai.</h3>
+        </div>
+    </div>
+</div>
+
+
+<div id="desktop">
+
+
+    <div class="icon" data-link="OldTV.html">
+        <img src="folder(2).png">
+        <p>Video Room</p>
+    </div>
+
+    <div class="icon" data-project="project-3">
+        <img src="folder.png">
+        <p>About me</p>
+    </div>
+
+    <div class="icon" data-link="TSA scan.html">
+        <img src="folder(3).png">
+        <p>3D Scans</p>
+    </div>
+
+    <div class="icon" data-link="Art Gallery.html">
+        <img src="folder(4).png">
+        <p>Traditional Gallery</p>
+    </div>
+
+    <div class="icon" data-project="project-6">
+        <img src="folder.png">
+        <p>Contact me</p>
+    </div>
+
+   
+
+
+    <div class="window" id="project-3">
+        <button class="close">X</button>
+        <div class="window-content">
+            <img src="FotoProfesionalreenshot 2025-04-23 211823.png" style="height: 800px;">
+            <div class="text">
+                <h1>About me</h1>
+                <p>Hello! My name is David. I am 20 years old, born and raised in Mexico City. 
+                    I love anything art related from movies to music and even museum pieces, 
+                    its more than a hobby. Its a way of life to me.<br> <br>
+                    In Mexico I passed the High School IB Diploma where I learned most of my 
+                    technical writing skills and some artistic as well. Im currently based in 
+                    Groningen, Netherlands where Im pursuing a Create Media and Game Technologies 
+                    bachelors degree. <br><br>
+                    In the 2 years of my program I have focused more on the area
+                    of creativity, whether its graphic design, filmmaking, 3D modelling, game design, 
+                    video editing or digital sculpting. Even some programming. <br> <br>
+                    I believe I am able to bring a new perspective to any project, not only because 
+                    of my cultural background but because of my passion for creating with the goal 
+                    of making something that is unique. <br> <br>
+                    Want to see how this translates into real projects? Explore my work.
+                </p>
+            </div>
+        </div>
+    </div>
+
+    
+    <div class="window" id="project-6">
+        <button class="close">X</button>
+        <div class="window-content">
+             <!-- Columna izquierda -->
+            <div class="text" style="margin-left: 30px;">
+                <h1>Contact Me
+                    <br><br>
+                </h1>
+                <p>
+                    Interested in working together, collaborating, or just saying hi?
+                    <br><br>
+                    Feel free to reach out through any of the platforms below.
+                    I am always open to new ideas and creative projects.
+                    <br><br>
+                </p>
+
+                <h2>Email</h2>
+                <p>
+                    <a href="mailto:dfuentesdabbah@gmail.com">dfuentesdabbah@gmail.com</a>
+                    <br><br>
+                </p>
+
+                <h2>Socials</h2>
+                <p>
+                    <a href="https://www.instagram.com/davidabbahf/" target="_blank">Instagram</a><br>
+                    <a href="https://www.linkedin.com/in/david-fuentes-dabbah-b8122132b/" target="_blank">LinkedIn</a><br>
+                </p>
+            </div>
+
+            <!-- Columna derecha -->
+            <div class="text" style="margin-top: 350px;">
+                <h2>Send me a message</h2>
+                <form action="https://formspree.io/f/xjgpyjvp" method="POST">               
+                    <input type="text" name="name" placeholder="Your name" required><br><br>
+                    <input type="email" name="email" placeholder="Your email" required><br><br>
+                    <textarea name="message" placeholder="Your message..." rows="6" required></textarea><br><br>
+                    <button type="submit">Send</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+<script>
+    const icons = document.querySelectorAll(".icon");
+    const windows = document.querySelectorAll(".window");
+
+    icons.forEach(icon =>{
+        icon.addEventListener("click", () => {
+
+         if (icon.dataset.link) {
+            window.open(icon.dataset.link, "_blank", "noopener,noreferrer");
+            return;
+         }
+
+            const id = icon.dataset.project;
+
+            windows.forEach(win => win.style.display = "none");
+            document.getElementById(id).style.display = "block";
+        });
+    });
+
+    document.querySelectorAll(".close").forEach(btn =>{
+        btn.addEventListener("click", e => {
+            e.target.parentElement.style.display = "none";
+        });
+    });
+</script>
+
+</body>
+</html>

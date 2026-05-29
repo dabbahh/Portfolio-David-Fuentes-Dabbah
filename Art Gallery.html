@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang = "en">
+    <head>
+        <title>Art Gallery</title>
+        <style>
+            body {
+                margin: 0;
+                background: black;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items:center;
+                height: auto;
+                overflow: auto;
+                font-family: Arial, Helvetica, sans-serif;
+            }
+
+            .empty {
+                margin: 100px;
+            }
+
+            .header {
+                margin-top: 10px;
+                margin-bottom: 40px;
+            }
+
+             .header2 {
+                margin-bottom: 40px;
+            }
+
+            .carousel {
+                width: 100%;
+                height: 400px;
+                perspective: 2900px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                margin-bottom: 350px;
+            }
+
+            .carousel-track {
+                position: relative;
+                transform-style: preserve-3d;
+                width: 300px;
+                height: 300px;
+            }
+
+            .carousel-track img {
+                position: absolute;
+                left: 50%;
+                top: 50%;
+                transform-origin: center center;
+                max-height: 350px;
+                width: auto;
+                transform: translate(-50%, -50%);
+                transition: transform 0.5s;
+            } 
+
+            h1 {
+                font-size: 70px;
+                text-align: center;
+                color: white;
+            }
+
+            h2 {
+                font-size: 40px;
+                text-align: center;
+                color: white;
+            }
+
+            .close-zone {
+                position: fixed; 
+                bottom: 0;
+                left: 0;
+                width: 120px;
+                height: 120px;
+
+                background-color: black;
+                background-image: url("GoBackArrow.png");
+                background-size: contain;
+                background-repeat: no-repeat;
+                background-position: center;
+
+                cursor: pointer;
+                z-index: 999;
+            }
+
+        </style>
+    </head>
+
+    <body>
+        <div class="header">
+            <h1>Traditional Gallery</h1>
+        </div>
+        <div class="header2">
+            <h2>Here are some of my physical artworks, some watercolors, oil paintings, pieces of clothing,
+                <br>acrylic paints and some Sketchbook pages.
+                <br>
+                <br>Fine Arts is one of my passions, I hope this showcase shows part of my
+                <br>creativity as well as my artistic skills.
+            </h2>
+        </div>
+        
+        <div class="carousel">
+            <div class="carousel-track" id="carousel1">
+                <img src="Mural1.png">
+                <img src="oil1.png">
+                <img src="Negro1.png">
+                <img src="Negro2.png">
+                <img src="Acuarela1.png">
+                <img src="sudadera.png">
+                <img src="Morado.png">
+                <img src="Azul.png">
+            </div>
+        </div>
+
+        <div class="carousel">
+            <div class="carousel-track" id="carousel2">
+                <img src="Sketchbook1.jpeg">
+                <img src="Sketchbook2.jpeg">
+                <img src="Sketchbook3.jpeg">
+                <img src="Sketchbook4.jpeg">
+                <img src="Sketchbook5.jpeg">
+                <img src="Sketchbook6.jpeg">
+                <img src="Sketchbook7.jpeg">
+            </div>
+        </div>
+
+        <div class="empty">
+
+        </div>
+
+        <div class="close-zone"></div>
+    </body>
+
+    <script>
+    
+    function createCarousel(trackSelector, radius = 700, tiltX = -10, speed = 0.03){
+        const track = document.querySelector(trackSelector);
+        const images = track.querySelectorAll("img");
+        const total = images.length;
+        const angle = 360 / total;
+
+        images.forEach((img, i) =>{
+            const rotation = angle * i;
+            img.dataset.angle = angle * i;
+            img.style.transform = `
+                rotateY(${rotation}deg) 
+                translateZ(${radius}px)
+                `;
+        });
+
+        let currentRotation = 0;
+
+        function rotateCarousel(){
+            currentRotation += speed;
+            currentRotation %= 360;
+
+            images.forEach(img =>{
+                
+                const baseAngle = parseFloat(img.dataset.angle);
+                const radians = (baseAngle + currentRotation) * Math.PI / 180;
+                const z = Math.cos(radians);
+
+                if (z < 0.7) {
+                    img.style.filter = "grayscale(100%)"
+                    img.style.opacity = 0.6;
+                } else {
+                    img.style.filter = "none";
+                    img.style.opacity = 1;
+                }
+            });
+            
+            track.style.transform = 
+                ` rotateX(${tiltX}deg) 
+                rotateY(${currentRotation}deg)
+                `;
+
+            requestAnimationFrame(rotateCarousel);
+        }
+
+        rotateCarousel();
+    }
+
+    createCarousel("#carousel1");
+    createCarousel("#carousel2");
+
+    document.querySelector(".close-zone").addEventListener("click", () => {
+        window.close();
+    });
+
+    </script>
+</html>
