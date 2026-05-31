@@ -73,45 +73,45 @@
             .channel-list {
                 position:absolute;
                 top: 50%;
-                left: calc(50% - 750px - 200px);
+                left: 3vw;
                     /* 50% = centro pantalla
                     -400px = distancia hacia la tv
                     -200px = ancho del panel */
                 transform: translateY(-50%);
                 background: rgba(0,0,0,0.85);
                 padding: 20px;
-                width: 561px;
+                width: 29vw;
             }
 
             .channel {
                 cursor:pointer;
-                font-size: 60px;
+                font-size: clamp(18px, 2.5vw, 50px);
                 letter-spacing: 2.5px;
                 transition: 0.3s ease;
             }
 
             .channel:hover {
-                font-size: 70px;
+                font-size: clamp(22px, 3vw, 60px);
                 font-weight: bold;
             }
 
             .info-panel {
                 position: absolute;
                 top: 50%;
-                left: calc(50% + 500px);
+                right: 2vw;
                 transform: translateY(-50%);
                 background: rgba(0,0,0,0.85);
-                padding: 40px;
-                width: 350px;
+                padding: 2vw;
+                width: 18vw;
             }
 
             .info-panel h2 {
-                font-size: 35px;
+                font-size: 1.8vw;
             }
 
             .info-panel p {
                 opacity: 0.7;
-                font-size: 25px;
+                font-size: 1.3vw;
             }
 
             .instruction-card {
@@ -173,16 +173,16 @@
             </div>
 
             <div class="instruction-card" style="
-                top: calc(30% - 240px);
-                left: calc(50% - 820px);
+                top: 8vh;
+                left: 3vw;
                 transform: translateY(-50%);">
                 
                 <h2>Hover over a project to preview it.</h2>
             </div>
 
             <div class="instruction-card" style="
-                top: calc(30% - 240px);
-                left: calc(50% - 420px);
+                top: 8vh;
+                left: 35vw;
                 transform: translateY(-50%);">
                 
                 <h2>Click to open the complete video on YouTube.</h2>
